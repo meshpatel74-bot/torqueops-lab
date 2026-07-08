@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary Meta Tags -->
+<title>Connected CFO Diagnostic | TorqueOps</title>
+<meta name="title" content="Connected CFO Diagnostic | TorqueOps">
+<meta name="description" content="Score your SaaS Finance stack across 4 architecture layers in 60 seconds. AI-powered diagnostic built on the Connected CFO framework. Free, no signup.">
+<meta name="author" content="Dharmesh Patel, TorqueOps">
+<link rel="canonical" href="https://lab.gettorqueops.com/">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lab.gettorqueops.com/">
+<meta property="og:title" content="Connected CFO Diagnostic | TorqueOps">
+<meta property="og:description" content="Score your SaaS Finance stack across 4 architecture layers in 60 seconds. AI-powered, built on the Connected CFO framework by Dharmesh Patel.">
+<meta property="og:image" content="https://lab.gettorqueops.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Connected CFO Diagnostic — TorqueOps Lab">
+<meta property="og:site_name" content="TorqueOps Lab">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://lab.gettorqueops.com/">
+<meta name="twitter:title" content="Connected CFO Diagnostic | TorqueOps">
+<meta name="twitter:description" content="Score your SaaS Finance stack across 4 architecture layers in 60 seconds. AI-powered, free, no signup.">
+<meta name="twitter:image" content="https://lab.gettorqueops.com/og-image.png">
+
+<!-- Favicon (optional, can be added later) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231F2A44'/%3E%3Ctext x='50' y='65' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='40' fill='%23C0392B'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1F2A44;
+    --navy-deep: #141B2D;
+    --red: #C0392B;
+    --red-deep: #962A1E;
+    --orange: #D9822B;
+    --teal: #5A8A92;
+    --blue-bar: #2E5C8A;
+    --ink: #0F1623;
+    --gray-900: #2C3340;
+    --gray-700: #5A6473;
+    --gray-500: #8C95A3;
+    --gray-300: #C9CFDA;
+    --gray-200: #E1E5EC;
+    --gray-100: #F0F2F6;
+    --gray-50: #F7F8FA;
+    --paper: #FBFAF7;
+    --paper-warm: #F4EFE6;
+    --green: #1B5E3A;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter Tight', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ TOP BAR ============ */
+  .topbar {
+    background: var(--navy-deep);
+    color: #fff;
+    padding: 14px 0;
+    border-bottom: 3px solid var(--red);
+  }
+  .topbar-inner {
+    max-width: 1180px; margin: 0 auto; padding: 0 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .brand {
+    font-weight: 800; font-size: 20px; letter-spacing: -0.02em; color: #fff;
+    text-decoration: none;
+  }
+  .brand span { color: var(--red); }
+  .brand small { display: block; font-size: 10px; font-weight: 500; color: var(--gray-300); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 2px; }
+  .topbar-tag {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    color: var(--orange); text-transform: uppercase;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 60%, #243250 100%);
+    color: #fff;
+    padding: 48px 24px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -150px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(192,57,43,0.25), transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 880px; margin: 0 auto; position: relative; z-index: 2; }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.22em;
+    color: #ED8074; font-weight: 500;
+    margin-bottom: 16px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: #ED8074; }
+  h1 {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(32px, 4.5vw, 44px);
+    line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 14px;
+    font-variation-settings: "opsz" 144;
+  }
+  .hero-deck {
+    font-size: 18px; color: #C2C9D6;
+    max-width: 720px; line-height: 1.5;
+    margin-bottom: 24px;
+  }
+  .hero-trust {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .trust-item {
+    font-size: 13px;
+    color: #BFC7D6;
+    font-weight: 500;
+  }
+  .trust-divider {
+    color: #5A6473;
+    font-size: 13px;
+  }
+
+  /* ============ MAIN ============ */
+  main { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  /* ============ STEPPER ============ */
+  .stepper {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 4px; margin-bottom: 36px;
+  }
+  .step {
+    padding: 14px 16px;
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-bottom: 3px solid var(--gray-200);
+    font-size: 13px;
+  }
+  .step.active { border-bottom-color: var(--red); background: var(--paper-warm); }
+  .step.complete { border-bottom-color: var(--teal); }
+  .step-num {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--gray-700); letter-spacing: 0.1em;
+    display: block; margin-bottom: 4px;
+  }
+  .step.active .step-num { color: var(--red); }
+  .step.complete .step-num { color: var(--teal); }
+  .step-name { font-weight: 600; color: var(--navy); font-size: 13px; }
+
+  /* ============ FORM CARD ============ */
+  .card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    padding: 36px 36px 32px;
+    margin-bottom: 24px;
+  }
+  .card h2 {
+    font-family: var(--serif); font-size: 26px;
+    font-weight: 600; color: var(--navy);
+    margin-bottom: 6px; letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 144;
+  }
+  .card-sub {
+    font-size: 14px; color: var(--gray-700);
+    margin-bottom: 28px; line-height: 1.55;
+  }
+  .form-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 18px 20px;
+  }
+  .form-grid.full-width-last > div:last-child { grid-column: 1 / -1; }
+  .field { display: flex; flex-direction: column; }
+  .field.full { grid-column: 1 / -1; }
+  label {
+    font-size: 12px; font-weight: 600;
+    color: var(--navy); margin-bottom: 6px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  label .help { font-weight: 400; color: var(--gray-500); text-transform: none; letter-spacing: 0; }
+  input[type="text"], input[type="email"], select {
+    padding: 11px 14px; border: 1.5px solid var(--gray-300);
+    background: #fff; font-family: var(--sans);
+    font-size: 15px; color: var(--ink);
+    border-radius: 3px; transition: border-color 0.15s;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--red); }
+  select { cursor: pointer; }
+
+  .demo-bar {
+    background: var(--paper-warm); border: 1px solid var(--gray-200);
+    padding: 12px 16px; margin-bottom: 24px; border-radius: 3px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .demo-bar-label {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--gray-700); letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 500;
+  }
+  .demo-buttons {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .demo-btn {
+    font-family: var(--mono); font-size: 11px;
+    background: #fff; border: 1px solid var(--gray-300);
+    padding: 6px 11px; cursor: pointer; border-radius: 3px;
+    color: var(--gray-900); transition: all 0.15s;
+  }
+  .demo-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+  .btn-row { display: flex; gap: 12px; margin-top: 28px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 28px; border-radius: 3px;
+    font-weight: 700; font-size: 15px; cursor: pointer;
+    transition: all 0.15s; font-family: var(--sans);
+    border: none; text-decoration: none;
+  }
+  .btn-primary {
+    background: var(--red); color: #fff;
+  }
+  .btn-primary:hover { background: var(--red-deep); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--navy);
+    border: 1.5px solid var(--gray-300);
+  }
+  .btn-secondary:hover { border-color: var(--navy); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* ============ LOADING ============ */
+  .loading {
+    text-align: center; padding: 60px 24px;
+  }
+  .loading-spinner {
+    width: 56px; height: 56px; margin: 0 auto 20px;
+    border: 4px solid var(--gray-200);
+    border-top-color: var(--red);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-text {
+    font-family: var(--mono); font-size: 13px;
+    color: var(--gray-700); letter-spacing: 0.08em;
+  }
+  .loading-step {
+    font-size: 14px; color: var(--navy); font-weight: 600;
+    margin-top: 8px;
+  }
+
+  /* ============ RESULTS ============ */
+  .results-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: #fff;
+    padding: 36px;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .results-header::before {
+    content: ''; position: absolute; top: -80px; right: -60px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(217,130,43,0.18), transparent 65%);
+    pointer-events: none;
+  }
+  .results-eyebrow {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.22em;
+    color: #ED8074; margin-bottom: 12px; font-weight: 500;
+  }
+  .results-company {
+    font-family: var(--serif); font-size: 26px; font-weight: 600;
+    margin-bottom: 4px; letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 144;
+  }
+  .results-archetype {
+    font-size: 14px; color: #C2C9D6; margin-bottom: 24px;
+    font-style: italic;
+  }
+  .overall-score-row {
+    display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+    padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .overall-score-num {
+    font-family: var(--serif); font-size: 60px; font-weight: 600;
+    line-height: 1; color: #fff; letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144;
+  }
+  .overall-score-num small {
+    font-size: 22px; color: #C2C9D6; font-weight: 500;
+  }
+  .overall-score-label {
+    font-size: 11px; font-family: var(--mono);
+    color: #ED8074; letter-spacing: 0.18em;
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .overall-tier {
+    font-size: 20px; font-weight: 700; color: #fff;
+    font-family: var(--sans);
+  }
+
+  .results-body {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    padding: 32px 36px 36px;
+    margin-bottom: 24px;
+  }
+
+  .results-section { margin-bottom: 32px; }
+  .results-section:last-child { margin-bottom: 0; }
+  .results-section-title {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.22em;
+    color: var(--red); font-weight: 600;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  /* Layer scores */
+  .layer-grid { display: flex; flex-direction: column; gap: 10px; }
+  .layer-bar-row {
+    display: grid; grid-template-columns: 130px 1fr 60px;
+    gap: 14px; align-items: center;
+  }
+  .layer-bar-label {
+    font-weight: 600; font-size: 13px; color: var(--navy);
+    display: flex; flex-direction: column;
+  }
+  .layer-bar-label small {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gray-500); letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 500;
+  }
+  .layer-bar-track {
+    height: 28px; background: var(--gray-100);
+    border-radius: 2px; overflow: hidden; position: relative;
+  }
+  .layer-bar-fill {
+    height: 100%; background: var(--navy);
+    transition: width 0.6s ease;
+    display: flex; align-items: center; justify-content: flex-end;
+    padding-right: 10px;
+    color: #fff; font-weight: 700; font-size: 12px;
+    font-family: var(--mono);
+  }
+  .layer-bar-fill.l1 { background: linear-gradient(90deg, var(--navy), #2D3D5C); }
+  .layer-bar-fill.l2 { background: linear-gradient(90deg, var(--blue-bar), #3F71A1); }
+  .layer-bar-fill.l3 { background: linear-gradient(90deg, var(--teal), #6B9DA6); }
+  .layer-bar-fill.l4 { background: linear-gradient(90deg, var(--red), #D04E40); }
+  .layer-score-text {
+    font-family: var(--mono); font-weight: 700;
+    text-align: right; font-size: 14px; color: var(--navy);
+  }
+  .layer-score-text .max { color: var(--gray-500); font-weight: 500; }
+
+  .commentary {
+    font-size: 15px; line-height: 1.65; color: var(--gray-900);
+  }
+  .commentary p { margin-bottom: 14px; }
+  .commentary p:last-child { margin-bottom: 0; }
+  .commentary strong { color: var(--navy); font-weight: 700; }
+
+  .risk-card {
+    background: var(--paper-warm);
+    border-left: 4px solid var(--red);
+    padding: 18px 22px; margin: 12px 0;
+    border-radius: 0 3px 3px 0;
+  }
+  .risk-card-label {
+    font-family: var(--mono); font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--red); font-weight: 600; margin-bottom: 6px;
+  }
+  .risk-card-body {
+    font-size: 14px; color: var(--gray-900); line-height: 1.55;
+  }
+
+  .recommendation-box {
+    background: var(--navy-deep);
+    color: #fff;
+    padding: 24px 26px;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+  .recommendation-box::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle at top right, rgba(217,130,43,0.18), transparent 65%);
+    pointer-events: none;
+  }
+  .recommendation-label {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: #ED8074; font-weight: 600; margin-bottom: 10px;
+  }
+  .recommendation-body {
+    font-size: 15px; line-height: 1.6;
+  }
+  .recommendation-body strong { color: #fff; font-weight: 700; }
+
+  .actions-box {
+    background: var(--paper-warm);
+    padding: 20px 24px; border-radius: 3px;
+    border: 1px solid var(--gray-200);
+  }
+  .actions-list { list-style: none; padding: 0; margin: 0; }
+  .actions-list li {
+    padding: 8px 0 8px 26px; position: relative;
+    font-size: 14px; color: var(--gray-900);
+    border-bottom: 1px dashed var(--gray-200);
+  }
+  .actions-list li:last-child { border-bottom: none; }
+  .actions-list li::before {
+    content: '◆'; color: var(--red);
+    position: absolute; left: 0; top: 10px; font-size: 10px;
+  }
+
+  .cta-bar {
+    background: var(--red);
+    color: #fff; padding: 24px 28px;
+    margin-top: 24px; border-radius: 3px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 18px; flex-wrap: wrap;
+  }
+  .cta-bar-text { flex: 1; min-width: 280px; }
+  .cta-bar-title {
+    font-family: var(--serif); font-size: 20px; font-weight: 600;
+    margin-bottom: 4px; letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 144;
+  }
+  .cta-bar-sub { font-size: 13px; color: #FFD9D2; }
+  .cta-bar .btn {
+    background: #fff; color: var(--red-deep);
+  }
+
+  .error-box {
+    background: #FEE; border: 1px solid #FCC;
+    padding: 16px 20px; border-radius: 3px;
+    color: #861; font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    text-align: center; padding: 32px 24px;
+    color: var(--gray-500); font-size: 13px;
+    border-top: 1px solid var(--gray-200);
+  }
+  footer a { color: var(--red); text-decoration: none; }
+
+  @media (max-width: 720px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .card { padding: 24px 22px; }
+    .results-header, .results-body { padding: 24px 22px; }
+    .stepper { grid-template-columns: repeat(2, 1fr); }
+    .layer-bar-row { grid-template-columns: 90px 1fr 50px; }
+    .layer-bar-label { font-size: 12px; }
+    .overall-score-num { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#" class="brand">
+      TORQUE<span>OPS</span>
+      <small>Where Profit Meets Execution</small>
+    </a>
+    <div class="topbar-tag">Connected CFO Lab · v1.0</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">CONNECTED CFO LAB · A TORQUEOPS TOOL</div>
+    <h1>Where is your Finance stack leaking?</h1>
+    <p class="hero-deck">A free AI-powered diagnostic for SaaS CFOs, COOs, and RevOps leaders. Score your stack across the 4 architecture layers from the Connected CFO framework — and find out where to start.</p>
+    <div class="hero-trust">
+      <span class="trust-item">⏱ 60 seconds</span>
+      <span class="trust-divider">·</span>
+      <span class="trust-item">📧 No signup required</span>
+      <span class="trust-divider">·</span>
+      <span class="trust-item">🧠 Powered by Claude</span>
+      <span class="trust-divider">·</span>
+      <span class="trust-item">📄 Based on the <a href="https://gettorqueops.com/resources/connectedcfo/" target="_blank" style="color: #ED8074; text-decoration: underline;">23-page whitepaper</a></span>
+    </div>
+  </div>
+</section>
+
+<main>
+
+<!-- STEPPER -->
+<div class="stepper" id="stepper">
+  <div class="step active" id="step-1">
+    <span class="step-num">01</span>
+    <span class="step-name">Stack Inputs</span>
+  </div>
+  <div class="step" id="step-2">
+    <span class="step-num">02</span>
+    <span class="step-name">AI Analysis</span>
+  </div>
+  <div class="step" id="step-3">
+    <span class="step-num">03</span>
+    <span class="step-name">Diagnostic Report</span>
+  </div>
+  <div class="step" id="step-4">
+    <span class="step-num">04</span>
+    <span class="step-name">Next Steps</span>
+  </div>
+</div>
+
+<!-- STEP 1: INPUT FORM -->
+<div id="form-card" class="card">
+  <h2>Tell the agent about your stack</h2>
+  <p class="card-sub">Five fields. The agent scores all four layers against the Connected CFO framework and generates a custom diagnostic in ~15 seconds.</p>
+
+  <div class="demo-bar">
+    <span class="demo-bar-label">Try a demo profile →</span>
+    <div class="demo-buttons" id="demoButtons"></div>
+  </div>
+
+  <div class="form-grid">
+    <div class="field">
+      <label>ARR Range</label>
+      <select id="arr">
+        <option value="">Select range</option>
+        <option>Under $5M</option>
+        <option>$5M – $10M</option>
+        <option>$10M – $25M</option>
+        <option>$25M – $50M</option>
+        <option>$50M – $100M</option>
+        <option>$100M+</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Growth Rate (YoY)</label>
+      <select id="growth">
+        <option value="">Select range</option>
+        <option>Under 20% (Mature)</option>
+        <option>20% – 50%</option>
+        <option>50% – 100%</option>
+        <option>100%+ (Hyper-growth)</option>
+      </select>
+    </div>
+    <div class="field full">
+      <label>Pricing Model</label>
+      <select id="pricing">
+        <option value="">Select model</option>
+        <option>Pure subscription (annual contracts)</option>
+        <option>Subscription + light overages</option>
+        <option>Hybrid (seat-based + usage)</option>
+        <option>Consumption + commit minimums</option>
+        <option>Pure consumption (pay-as-you-go)</option>
+        <option>Transaction fee / take-rate</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Data Warehouse <span class="help">L1</span></label>
+      <select id="warehouse">
+        <option value="">Select</option>
+        <option>None / spreadsheets</option>
+        <option>Snowflake</option>
+        <option>BigQuery</option>
+        <option>Redshift</option>
+        <option>Databricks</option>
+        <option>Data lake (S3, no warehouse)</option>
+        <option>Multiple / fragmented</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Billing System <span class="help">L2</span></label>
+      <select id="billing">
+        <option value="">Select</option>
+        <option>Stripe (basic subscription)</option>
+        <option>Stripe Billing + custom scripts</option>
+        <option>Chargebee</option>
+        <option>Zuora</option>
+        <option>Metronome</option>
+        <option>Orb</option>
+        <option>Zenskar</option>
+        <option>Maxio</option>
+        <option>Custom / homegrown</option>
+        <option>Manual invoicing</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>ERP / Accounting <span class="help">L3</span></label>
+      <select id="erp">
+        <option value="">Select</option>
+        <option>QuickBooks Online</option>
+        <option>Xero</option>
+        <option>NetSuite</option>
+        <option>Sage Intacct</option>
+        <option>SAP / Oracle</option>
+        <option>Rillet</option>
+        <option>Campfire</option>
+        <option>Everest Systems</option>
+        <option>Multiple / mid-migration</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>FP&A Tool <span class="help">L3</span></label>
+      <select id="fpa">
+        <option value="">Select</option>
+        <option>Excel / Google Sheets</option>
+        <option>Adaptive Insights</option>
+        <option>Anaplan</option>
+        <option>Runway</option>
+        <option>Mosaic</option>
+        <option>Drivetrain</option>
+        <option>Pigment</option>
+        <option>Cube</option>
+        <option>None - reports from ERP</option>
+      </select>
+    </div>
+    <div class="field full">
+      <label>Intelligence / GTM Signals <span class="help">L4 — select primary</span></label>
+      <select id="intel">
+        <option value="">Select</option>
+        <option>Static dashboards only (Tableau, Looker)</option>
+        <option>BI tool + manual CS health scoring</option>
+        <option>BI tool + Salesforce reports</option>
+        <option>Common Room / Pocus / Correlated (PLG signal)</option>
+        <option>Gong + BI tool</option>
+        <option>Full intelligence stack (signals + scoring + automation)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-primary" id="diagnoseBtn">Score My Stack →</button>
+    <button class="btn btn-secondary" id="clearBtn">Clear</button>
+  </div>
+  <p style="margin-top: 14px; font-size: 13px; color: var(--gray-500); font-family: var(--mono); letter-spacing: 0.02em;">Takes ~15 seconds. No email required. Results shown immediately.</p>
+  <div id="errorBox"></div>
+</div>
+
+<!-- STEP 2: LOADING -->
+<div id="loading-card" class="card" style="display: none;">
+  <div class="loading">
+    <div class="loading-spinner"></div>
+    <div class="loading-text" id="loadingText">ANALYZING STACK ARCHITECTURE</div>
+    <div class="loading-step" id="loadingStep">Mapping inputs to 4-layer framework...</div>
+  </div>
+</div>
+
+<!-- STEP 3: RESULTS -->
+<div id="results" style="display: none;"></div>
+
+</main>
+
+<footer>
+  <p><strong>Connected CFO Diagnostic Agent</strong> · v1.0 · Built on the Connected CFO framework by <a href="https://gettorqueops.com">TorqueOps</a></p>
+  <p style="margin-top: 6px;">© 2026 TorqueOps · <a href="https://gettorqueops.com/resources/connectedcfo/">Read the 23-page whitepaper</a></p>
+</footer>
+
+<!-- Vercel Analytics (free, privacy-friendly, no cookies) -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+<!-- Vercel Speed Insights -->
+<script>
+  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+
+<script>
+  // ============ DEMO PROFILES ============
+  const demos = [
+    { name: "$8M Bootstrapped", id: "S01", data: { arr: "$5M – $10M", growth: "Under 20% (Mature)", pricing: "Pure subscription (annual contracts)", warehouse: "None / spreadsheets", billing: "Stripe (basic subscription)", erp: "QuickBooks Online", fpa: "Excel / Google Sheets", intel: "Static dashboards only (Tableau, Looker)" }},
+    { name: "$15M Series A", id: "S02", data: { arr: "$10M – $25M", growth: "50% – 100%", pricing: "Subscription + light overages", warehouse: "Snowflake", billing: "Zuora", erp: "NetSuite", fpa: "Adaptive Insights", intel: "BI tool + Salesforce reports" }},
+    { name: "$22M AI/API", id: "S03", data: { arr: "$10M – $25M", growth: "100%+ (Hyper-growth)", pricing: "Pure consumption (pay-as-you-go)", warehouse: "BigQuery", billing: "Stripe Billing + custom scripts", erp: "NetSuite", fpa: "Excel / Google Sheets", intel: "BI tool + Salesforce reports" }},
+    { name: "$35M Hybrid", id: "S04", data: { arr: "$25M – $50M", growth: "50% – 100%", pricing: "Hybrid (seat-based + usage)", warehouse: "Snowflake", billing: "Zuora", erp: "NetSuite", fpa: "Anaplan", intel: "Common Room / Pocus / Correlated (PLG signal)" }},
+    { name: "$42M Top Quartile", id: "S12", data: { arr: "$25M – $50M", growth: "100%+ (Hyper-growth)", pricing: "Consumption + commit minimums", warehouse: "Snowflake", billing: "Metronome", erp: "Rillet", fpa: "Runway", intel: "Full intelligence stack (signals + scoring + automation)" }},
+  ];
+
+  const demoButtonsEl = document.getElementById("demoButtons");
+  demos.forEach(d => {
+    const btn = document.createElement("button");
+    btn.className = "demo-btn";
+    btn.textContent = d.name;
+    btn.onclick = () => {
+      loadDemo(d.data);
+      trackEvent("demo_loaded", { profile: d.name });
+    };
+    demoButtonsEl.appendChild(btn);
+  });
+
+  // ============ ANALYTICS HELPER ============
+  function trackEvent(eventName, props) {
+    try {
+      if (typeof window.va === "function") {
+        window.va("event", { name: eventName, data: props || {} });
+      }
+    } catch (e) { /* fail silently */ }
+  }
+
+  function loadDemo(data) {
+    Object.keys(data).forEach(k => {
+      const el = document.getElementById(k);
+      if (el) el.value = data[k];
+    });
+  }
+
+  document.getElementById("clearBtn").onclick = () => {
+    ["arr","growth","pricing","warehouse","billing","erp","fpa","intel"].forEach(id => {
+      document.getElementById(id).value = "";
+    });
+    document.getElementById("errorBox").innerHTML = "";
+  };
+
+  // ============ DIAGNOSE ============
+  document.getElementById("diagnoseBtn").onclick = runDiagnostic;
+
+  async function runDiagnostic() {
+    const inputs = {
+      arr: document.getElementById("arr").value,
+      growth: document.getElementById("growth").value,
+      pricing: document.getElementById("pricing").value,
+      warehouse: document.getElementById("warehouse").value,
+      billing: document.getElementById("billing").value,
+      erp: document.getElementById("erp").value,
+      fpa: document.getElementById("fpa").value,
+      intel: document.getElementById("intel").value
+    };
+
+    const errorBox = document.getElementById("errorBox");
+    errorBox.innerHTML = "";
+
+    const missing = Object.entries(inputs).filter(([k,v]) => !v).map(([k]) => k);
+    if (missing.length > 0) {
+      errorBox.innerHTML = `<div class="error-box">⚠️ Please complete all fields before running the diagnostic.</div>`;
+      return;
+    }
+
+    // Track diagnostic start
+    trackEvent("diagnostic_started", {
+      arr: inputs.arr,
+      growth: inputs.growth,
+      pricing: inputs.pricing
+    });
+
+    // Move to loading state
+    document.getElementById("form-card").style.display = "none";
+    document.getElementById("loading-card").style.display = "block";
+    document.getElementById("step-1").classList.remove("active");
+    document.getElementById("step-1").classList.add("complete");
+    document.getElementById("step-2").classList.add("active");
+
+    // Loading message animation
+    const messages = [
+      "Mapping inputs to 4-layer framework...",
+      "Calculating Data Layer (L1) maturity...",
+      "Calculating Billing Layer (L2) maturity...",
+      "Calculating Financial Layer (L3) maturity...",
+      "Calculating Intelligence Layer (L4) maturity...",
+      "Identifying highest-risk gap...",
+      "Generating CFO-style commentary...",
+      "Building recommended starting point..."
+    ];
+    let msgIdx = 0;
+    const msgInterval = setInterval(() => {
+      msgIdx = (msgIdx + 1) % messages.length;
+      document.getElementById("loadingStep").textContent = messages[msgIdx];
+    }, 1500);
+
+    try {
+      const prompt = buildPrompt(inputs);
+      const response = await callClaude(prompt);
+      clearInterval(msgInterval);
+      // Track successful completion
+      trackEvent("diagnostic_completed", {
+        overall_score: response.overall_score,
+        tier: response.overall_tier,
+        arr: inputs.arr
+      });
+      renderResults(inputs, response);
+    } catch (err) {
+      clearInterval(msgInterval);
+      // Track failure
+      trackEvent("diagnostic_failed", { error: err.message.substring(0, 80) });
+      document.getElementById("loading-card").style.display = "none";
+      document.getElementById("form-card").style.display = "block";
+      document.getElementById("step-2").classList.remove("active");
+      document.getElementById("step-1").classList.add("active");
+      document.getElementById("step-1").classList.remove("complete");
+      errorBox.innerHTML = `<div class="error-box">⚠️ Diagnostic failed: ${err.message}. Try again.</div>`;
+      console.error(err);
+    }
+  }
+
+  function buildPrompt(inputs) {
+    return `You are a Connected CFO diagnostic agent built by TorqueOps (Dharmesh Patel's fractional CFO practice). You score a SaaS company's finance stack maturity across 4 layers based on the Connected CFO framework.
+
+FRAMEWORK:
+- L1 (Data Layer): Real-time product event streaming, unified data warehouse, telemetry schema. Modern: Snowflake, BigQuery, Segment, dbt. Legacy: CSV exports, no warehouse.
+- L2 (Billing Layer): Usage metering, hybrid pricing engine, ASC 606 automation. Modern: Metronome, Zenskar, Orb, Maxio. Legacy: Zuora (subscription-only), Stripe basic, manual invoicing.
+- L3 (Financial Layer): AI-native close, rolling forecasts, real-time GL. Modern: Rillet, Campfire, Everest, Runway, Mosaic, Drivetrain. Legacy: NetSuite + Anaplan, QuickBooks, SAP.
+- L4 (Intelligence Layer): Churn/expansion signals, ICP propensity, GTM playbooks from usage. Modern: Common Room, Pocus, Correlated, Gong. Legacy: Static QBRs, manual CS scoring.
+
+CUSTOMER STACK:
+- ARR: ${inputs.arr}
+- Growth Rate: ${inputs.growth}
+- Pricing Model: ${inputs.pricing}
+- Data Warehouse: ${inputs.warehouse}
+- Billing: ${inputs.billing}
+- ERP: ${inputs.erp}
+- FP&A: ${inputs.fpa}
+- Intelligence/GTM Signals: ${inputs.intel}
+
+YOUR TASK:
+Score each layer 1-10 based on (a) inherent capability of the tools, (b) fit-to-pricing-model, (c) typical alignment at this ARR scale.
+
+Penalize stacks where:
+- Pricing model is consumption-heavy but billing is subscription-only (L2 mismatch)
+- ARR is >$25M but no data warehouse (L1 critical gap)
+- ARR is >$15M but using QuickBooks (L3 mismatch)
+- Hyper-growth (100%+) but no intelligence layer (L4 critical gap)
+
+Identify the SINGLE highest-risk gap (not multiple). Give a concrete dollar-impact estimate where possible.
+
+Recommend ONE concrete starting point — the next vendor/process change with the highest ROI for THIS specific stack.
+
+Respond ONLY with valid JSON in this exact schema (no markdown, no preamble):
+{
+  "company_label": "Brief label like '$15M Series A SaaS — Modernizing'",
+  "archetype": "One-line description of the company's stack archetype",
+  "overall_tier": "One of: 'Foundation Critical', 'Foundation Missing', 'Mid-Build', 'Architecture Imbalanced', 'Connected Stack', 'Top Quartile Connected'",
+  "overall_score": <number 1-10, weighted average>,
+  "l1_score": <number 1-10>,
+  "l2_score": <number 1-10>,
+  "l3_score": <number 1-10>,
+  "l4_score": <number 1-10>,
+  "commentary": "2-3 paragraph analysis written in Dharmesh's voice — direct, no fluff, specific to this stack. Reference dollar amounts where applicable. No filler.",
+  "top_risk": "Single sentence identifying the highest-risk gap with specifics.",
+  "estimated_leakage": "Dollar estimate of annual leakage or efficiency cost, like '$1.2M-$1.8M ARR leakage annually' or 'Not leakage-driven — efficiency cost of ~4 days/month at close'",
+  "recommended_starting_point": "1-2 sentence concrete next step with vendor recommendation.",
+  "this_week_actions": ["3 concrete actions for this week", "Each one specific and bounded", "Each one feasible within 5 days"]
+}`;
+  }
+
+  // ============ API ENDPOINT ============
+  // After deploying to Vercel, replace this with your actual Vercel URL
+  // e.g. "https://torqueops-diagnostic.vercel.app/api/diagnose"
+  // Or if you wire up a custom domain: "https://api.gettorqueops.com/api/diagnose"
+  const API_ENDPOINT = "/api/diagnose";
+
+  async function callClaude(prompt) {
+    const response = await fetch(API_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: prompt })
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(`API ${response.status}: ${errText.substring(0,150)}`);
+    }
+
+    const data = await response.json();
+    const textBlock = data.content.find(b => b.type === "text");
+    if (!textBlock) throw new Error("No text response from model");
+
+    // Clean and parse JSON
+    let text = textBlock.text.trim();
+    text = text.replace(/^```json\s*/i, "").replace(/^```\s*/i, "").replace(/```$/i, "").trim();
+    return JSON.parse(text);
+  }
+
+  function renderResults(inputs, r) {
+    document.getElementById("loading-card").style.display = "none";
+    document.getElementById("step-2").classList.remove("active");
+    document.getElementById("step-2").classList.add("complete");
+    document.getElementById("step-3").classList.add("active");
+
+    const actionsHTML = (r.this_week_actions || []).map(a => `<li>${escapeHtml(a)}</li>`).join("");
+
+    const html = `
+      <div class="results-header">
+        <div class="results-eyebrow">Diagnostic Result · TorqueOps Connected CFO Agent</div>
+        <div class="results-company">${escapeHtml(r.company_label)}</div>
+        <div class="results-archetype">${escapeHtml(r.archetype)}</div>
+        <div class="overall-score-row">
+          <div>
+            <div class="overall-score-label">Overall Maturity</div>
+            <div class="overall-score-num">${r.overall_score.toFixed(1)}<small>/10</small></div>
+          </div>
+          <div style="flex: 1;">
+            <div class="overall-score-label">Tier</div>
+            <div class="overall-tier">${escapeHtml(r.overall_tier)}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-body">
+
+        <div class="results-section">
+          <div class="results-section-title">Layer-by-Layer Maturity</div>
+          <div class="layer-grid">
+            ${layerBar("Data Layer", "L1", r.l1_score, "l1")}
+            ${layerBar("Billing Layer", "L2", r.l2_score, "l2")}
+            ${layerBar("Financial Layer", "L3", r.l3_score, "l3")}
+            ${layerBar("Intelligence Layer", "L4", r.l4_score, "l4")}
+          </div>
+        </div>
+
+        <div class="results-section">
+          <div class="results-section-title">CFO-Style Commentary</div>
+          <div class="commentary">
+            ${r.commentary.split('\n\n').map(p => `<p>${escapeHtml(p)}</p>`).join('')}
+          </div>
+        </div>
+
+        <div class="results-section">
+          <div class="results-section-title">Highest-Risk Gap</div>
+          <div class="risk-card">
+            <div class="risk-card-label">⚠ Top Risk Identified</div>
+            <div class="risk-card-body">${escapeHtml(r.top_risk)}</div>
+          </div>
+          <div class="risk-card" style="border-left-color: var(--orange);">
+            <div class="risk-card-label" style="color: var(--orange);">💰 Estimated Cost</div>
+            <div class="risk-card-body">${escapeHtml(r.estimated_leakage)}</div>
+          </div>
+        </div>
+
+        <div class="results-section">
+          <div class="results-section-title">Recommended Starting Point</div>
+          <div class="recommendation-box">
+            <div class="recommendation-label">🎯 Highest-ROI Next Move</div>
+            <div class="recommendation-body">${escapeHtml(r.recommended_starting_point)}</div>
+          </div>
+        </div>
+
+        <div class="results-section">
+          <div class="results-section-title">This Week's Concrete Actions</div>
+          <div class="actions-box">
+            <ul class="actions-list">${actionsHTML}</ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cta-bar">
+        <div class="cta-bar-text">
+          <div class="cta-bar-title">Want to talk through this with Dharmesh?</div>
+          <div class="cta-bar-sub">20-min fit call · No pitch · Just stack triage</div>
+        </div>
+        <a href="https://calendly.com/dharmesh-gettorqueops/20min" target="_blank" class="btn" onclick="trackEvent('cta_calendly_clicked', { source: 'results_page' })">Book the call →</a>
+      </div>
+
+      <div class="cta-bar" style="background: var(--navy); margin-top: 12px;">
+        <div class="cta-bar-text">
+          <div class="cta-bar-title">Go deeper on the framework</div>
+          <div class="cta-bar-sub">Download the 23-page Connected CFO whitepaper · Full tool landscape + roadmaps</div>
+        </div>
+        <a href="https://gettorqueops.com/resources/connectedcfo/" target="_blank" class="btn" onclick="trackEvent('cta_whitepaper_clicked', { source: 'results_page' })">Get the whitepaper</a>
+      </div>
+
+      <div style="text-align:center; margin-top: 28px;">
+        <button class="btn btn-secondary" onclick="resetAgent()">← Run another diagnostic</button>
+      </div>
+    `;
+
+    const resultsEl = document.getElementById("results");
+    resultsEl.innerHTML = html;
+    resultsEl.style.display = "block";
+    setTimeout(() => {
+      document.getElementById("step-3").classList.remove("active");
+      document.getElementById("step-3").classList.add("complete");
+      document.getElementById("step-4").classList.add("active");
+    }, 800);
+  }
+
+  function layerBar(name, code, score, cls) {
+    const pct = (score / 10) * 100;
+    return `
+      <div class="layer-bar-row">
+        <div class="layer-bar-label">
+          <small>${code}</small>
+          ${name}
+        </div>
+        <div class="layer-bar-track">
+          <div class="layer-bar-fill ${cls}" style="width: ${pct}%;">${score}</div>
+        </div>
+        <div class="layer-score-text">${score}<span class="max">/10</span></div>
+      </div>`;
+  }
+
+  function escapeHtml(s) {
+    if (typeof s !== "string") return s;
+    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function resetAgent() {
+    document.getElementById("results").style.display = "none";
+    document.getElementById("results").innerHTML = "";
+    document.getElementById("form-card").style.display = "block";
+    ["step-1","step-2","step-3","step-4"].forEach((id, i) => {
+      const el = document.getElementById(id);
+      el.classList.remove("active", "complete");
+      if (i === 0) el.classList.add("active");
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+</script>
+
+</body>
+</html>

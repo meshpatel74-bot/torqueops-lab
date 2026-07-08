@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "public": false,
+  "functions": {
+    "api/diagnose.js": {
+      "maxDuration": 30
+    }
+  }
+}
